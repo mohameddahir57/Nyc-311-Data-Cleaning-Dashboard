@@ -308,6 +308,3 @@ The central principle is:
 
 > The raw data is preserved for transparency, the SQL file documents the transformation, the clean data supports analysis, and the dashboard communicates the results.
 
-## 15. Source reference
-
-[1]: https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9 "311 Service Requests from 2020 to Present — NYC Open Data"
