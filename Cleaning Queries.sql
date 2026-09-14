@@ -1,5 +1,4 @@
 -- NYC 311 DATA CLEANING SCRIPT
--- ================================================================
 -- Purpose:
 -- This script cleans the raw NYC 311 service-request data.
 --
@@ -20,20 +19,15 @@
 -- Example import commands:
 --   .mode csv
 --   .import raw_data.csv raw_311
--- ================================================================
 
 
--- ================================================================
 -- STEP 1: Remove the old clean table
--- ================================================================
 -- This allows the script to be run again without an error.
 
 DROP TABLE IF EXISTS clean_data;
 
 
--- ================================================================
 -- STEP 2: Create a standardized staging table
--- ================================================================
 --
 -- This step prepares the values before the final table is created.
 --
@@ -101,10 +95,8 @@ SELECT
 FROM raw_311;
 
 
--- ================================================================
 -- STEP 3: Remove records without essential information
--- ================================================================
---
+
 -- A request needs both of these fields for this project:
 --   request_id: identifies the request
 --   created_date: tells us when the request was created
@@ -116,10 +108,8 @@ WHERE request_id IS NULL
    OR created_date IS NULL;
 
 
--- ================================================================
 -- STEP 4: Remove duplicate requests
--- ================================================================
---
+
 -- A request ID should appear only once in the final data.
 --
 -- ROW_NUMBER gives each repeated request ID a number:
@@ -141,10 +131,8 @@ SELECT
 FROM cleaned_stage;
 
 
--- ================================================================
 -- STEP 5: Create the final clean table
--- ================================================================
---
+
 -- Only duplicate_number = 1 is kept.
 -- The helper column duplicate_number is not included in the final data.
 --
@@ -191,9 +179,8 @@ FROM numbered_stage
 WHERE duplicate_number = 1;
 
 
--- ================================================================
 -- STEP 6: Create helpful indexes
--- ================================================================
+
 -- Indexes make common searches and filters faster.
 -- They do not change the data.
 
@@ -207,9 +194,8 @@ CREATE INDEX idx_clean_data_borough
     ON clean_data(borough);
 
 
--- ================================================================
 -- STEP 7: Check the cleaning result
--- ================================================================
+
 -- These queries are validation checks. They do not modify the data.
 
 -- Check the number of rows in the clean table.
@@ -238,9 +224,7 @@ FROM clean_data
 LIMIT 10;
 
 
--- ================================================================
 -- CLEANING SUMMARY
--- ================================================================
 -- The raw data is kept in raw_311.
 -- The cleaned data is stored in clean_data.
 --
