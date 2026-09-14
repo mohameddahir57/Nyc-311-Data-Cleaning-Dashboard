@@ -50,10 +50,10 @@ nyc-311-data-cleaning-dashboard/
 
 | File | Purpose |
 |---|---|
-| `raw_data.xlsx` | The original uncleaned dataset. |
-| `clean_data.xlsx` | The cleaned and analysis-ready dataset. |
-| `cleaning_queries.sql` | All SQL queries used to clean, transform, and validate the data. |
-| `nyc_311_dashboard.png` | The final dashboard generated from the cleaned data. |
+| `Raw Data.xlsx` | The original uncleaned dataset. |
+| `Clean Data.xlsx` | The cleaned and analysis-ready dataset. |
+| `Cleaning Queries.sql` | All SQL queries used to clean, transform, and validate the data. |
+| `Nyc311 Dashboard.png` | The final dashboard generated from the cleaned data. |
 | `README.md` | Complete project documentation. |
 
 ## 4. Why the raw and clean files do not have identical columns
